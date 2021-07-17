@@ -1,9 +1,9 @@
 import psycopg2
 
 DB_HOST = "localhost"
-DB_NAME = "postgres"
-DB_USER = "postgres"
-DB_PASS = "masiandsepehr7368"
+DB_NAME = ""
+DB_USER = ""
+DB_PASS = ""
 
 conn = psycopg2.connect(host=DB_HOST, dbname=DB_NAME, user=DB_USER, password=DB_PASS)
 
@@ -169,11 +169,12 @@ def delete_orders_database(orderdata):
 
 def read_orders_database(orderdata):
     cur = conn.cursor()
-    if orderdata['id'] == "*":
+    if orderdata == "*":
         s = 'SELECT * FROM orders'
+        cur.execute(s)
     else:
         s = 'SELECT * From orders where id=%s'
-    cur.execute(s, (orderdata["phone_number"],))
+        cur.execute(s, (orderdata["number"],))
     list_order = cur.fetchall()
     cur.close()
     return list_order

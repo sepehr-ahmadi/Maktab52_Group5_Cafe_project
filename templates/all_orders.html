@@ -1,0 +1,51 @@
+{% extends "cashier_dashboard.html" %}
+{% block title %}orders list{% endblock %}
+{% block css %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid text-center" style="min-height:75vh ">
+        <div class="row pt-3">
+            <div class="col pt-lg-4 m-auto">
+                <h4>orders</h4>
+            </div>
+        </div>
+        <div class="row p-lg-3 m-auto">
+            <div class="col">
+                <table class="table table-bordered" id=customers>
+                    <thead>
+                    <tr>
+                        <th class="text-center">number</th>
+                        <th class="text-center">status</th>
+                        <th class="text-center">item id</th>
+                        <th class="text-center">table number</th>
+
+                        <th class="text-center">order time</th>
+
+
+                    </tr>
+
+
+                    </thead>
+                    <tbody>
+                    {% for row in all_orders_list %}
+                        <tr>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+
+                            <td>{{ row[5] }}</td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

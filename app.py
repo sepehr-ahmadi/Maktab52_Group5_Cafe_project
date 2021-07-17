@@ -147,6 +147,17 @@ def orders_create():
     return render_template('orders_create.html', order_list=order_list)
 
 
+@app.route('/all_orders', methods=['POST','GET'])
+def all_orders():
+    all_orders_list = database_cafe.read_orders_database('*')
+
+    # for order in orders_list:
+    #     if order['status'] == 'on process':
+    #         new_orders_list =
+
+    return render_template('all_orders.html', all_orders_list=all_orders_list)
+
+
 ###----------------------------receipts part-----------------###
 @app.route("/receipts", methods=['GET', 'POST'])
 def receipts():

@@ -2,104 +2,157 @@
 {% block title %}dashboard{% endblock %}
 {% block css %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./Search_files/jquery.min.js"></script>
+    <script src="./Search_files/bootstrap.min.js"></script>
 {% endblock %}
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-3 p-2" style="min-height: 85vh">
-            <div class="panel text-center " id="side-panel">
-                <div class="card">
-                    <div class="card-header m-0 p-0">
-                        <a class="card-link " data-toggle="collapse" href="{{ url_for('cashier_dashboard') }}"><button class="btn btn-block btn-secondary">Dashboard</button>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card mt-2 ">
-                    <div class="card-header m-0 p-0">
-                        <a class="card-link " data-toggle="collapse" href="#users"><button class="btn btn-block btn-secondary">
-                            Users</button>
-                        </a>
-                    </div>
-                    <div id="users" class="collapse " data-parent="#side-panel">
-                        <div class="list-group-item">
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('user_list') }}">All Users</a></button>
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('user_register') }}">Add User</a></button>
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('user_update') }}">Edit User</a></button>
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('user_delete') }}">Delete User</a></button>
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 p-2" style="min-height: 85vh">
+                <div class="panel text-center " id="side-panel">
+                    <div class="card">
+                        <div class="card-header m-0 p-0">
+                            <a class="card-link " data-toggle="collapse" href="{{ url_for('cashier_dashboard') }}">
+                                <button class="btn btn-block btn-secondary">Dashboard</button>
+                            </a>
                         </div>
                     </div>
-                </div>
-                <div class="card mt-2 ">
-                    <div class="card-header m-0 p-0">
-                        <a class="card-link " data-toggle="collapse" href="#orders"><button class="btn btn-block btn-secondary">
-                            Orders</button>
-                        </a>
-                    </div>
-                    <div id="orders" class="collapse " data-parent="#side-panel">
-                        <div class="list-group-item">
-                            <button class="btn btn-block btn-light"><a href="#">New Orders</a></button>
-                            <button class="btn btn-block btn-light"><a href="#">Cooking Orders</a></button>
-                            <button class="btn btn-block btn-light"><a href="#">Served Orders</a></button>
-                            <button class="btn btn-block btn-light"><a href="#">Deleted Orders</a></button>
-                            <button class="btn btn-block btn-light"><a href="#">Paid Orders</a></button>
-                            <button class="btn btn-block btn-light"><a href="#">Archive</a></button>
+
+                    <div class="card mt-2 ">
+                        <div class="card-header m-0 p-0">
+                            <a class="card-link " data-toggle="collapse" href="#users">
+                                <button class="btn btn-block btn-secondary">
+                                    Users
+                                </button>
+                            </a>
+                        </div>
+                        <div id="users" class="collapse " data-parent="#side-panel">
+                            <div class="list-group-item">
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('user_list') }}">All
+                                    Users</a></button>
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('user_register') }}">Add
+                                    User</a></button>
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('user_update') }}">Edit
+                                    User</a></button>
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('user_delete') }}">Delete
+                                    User</a></button>
+
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="card mt-2 ">
-                    <div class="card-header m-0 p-0">
-                        <a class="card-link " data-toggle="collapse" href="#tables"><button class="btn btn-block btn-secondary">Tables</button>
-                        </a>
-                    </div>
-                    <div id="tables" class="collapse " data-parent="#side-panel">
-                        <div class="list-group-item">
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('table_list') }}">All Table</a></button>
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('table_register') }}">Add Table</a></button>
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('table_update') }}">Edit Table</a></button>
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('table_delete') }}">Delete Table</a></button>
-
+                    <div class="card mt-2 ">
+                        <div class="card-header m-0 p-0">
+                            <a class="card-link " data-toggle="collapse" href="#orders">
+                                <button class="btn btn-block btn-secondary">
+                                    Orders
+                                </button>
+                            </a>
+                        </div>
+                        <div id="orders" class="collapse " data-parent="#side-panel">
+                            <div class="list-group-item">
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('all_orders') }}">all
+                                    Orders</a></button>
+                                <button class="btn btn-block btn-light"><a href="#">New Orders</a></button>
+                                <button class="btn btn-block btn-light"><a href="#">Cooking Orders</a></button>
+                                <button class="btn btn-block btn-light"><a href="#">Served Orders</a></button>
+                                <button class="btn btn-block btn-light"><a href="#">Deleted Orders</a></button>
+                                <button class="btn btn-block btn-light"><a href="#">Paid Orders</a></button>
+                                <button class="btn btn-block btn-light"><a href="#">Archive</a></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card mt-2 ">
-                    <div class="card-header m-0 p-0">
-                        <a class="card-link " data-toggle="collapse" href="#menu-items"><button class="btn btn-block btn-secondary">Menu Items</button>
-                        </a>
-                    </div>
-                    <div id="menu-items" class="collapse " data-parent="#side-panel">
-                        <div class="list-group-item">
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('menu_list') }}">All Items</a></button>
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('menu_register') }}">Add Items</a></button>
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('menu_update') }}">Edit Items</a></button>
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('menu_delete') }}">Delete Items</a></button>
 
+                    <div class="card mt-2 ">
+                        <div class="card-header m-0 p-0">
+                            <a class="card-link " data-toggle="collapse" href="#tables">
+                                <button class="btn btn-block btn-secondary">Tables</button>
+                            </a>
+                        </div>
+                        <div id="tables" class="collapse " data-parent="#side-panel">
+                            <div class="list-group-item">
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('table_list') }}">All
+                                    Table</a></button>
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('table_register') }}">Add
+                                    Table</a></button>
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('table_update') }}">Edit
+                                    Table</a></button>
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('table_delete') }}">Delete
+                                    Table</a></button>
+
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="card mt-2 ">
+                        <div class="card-header m-0 p-0">
+                            <a class="card-link " data-toggle="collapse" href="#menu-items">
+                                <button class="btn btn-block btn-secondary">Menu Items</button>
+                            </a>
+                        </div>
+                        <div id="menu-items" class="collapse " data-parent="#side-panel">
+                            <div class="list-group-item">
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('menu_list') }}">All
+                                    Items</a></button>
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('menu_register') }}">Add
+                                    Items</a></button>
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('menu_update') }}">Edit
+                                    Items</a></button>
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('menu_delete') }}">Delete
+                                    Items</a></button>
 
-
-                <div class="card mt-2 ">
-                    <div class="card-header m-0 p-0">
-                        <a class="card-link " data-toggle="collapse" href="#receipts"><button class="btn btn-block btn-secondary">Receipts</button>
-                        </a>
+                            </div>
+                        </div>
                     </div>
-                    <div id="receipts" class="collapse " data-parent="#side-panel">
-                        <div class="list-group-item">
-                            <button class="btn btn-block btn-light"><a href="{{ url_for('receipts') }}">Receipt</a></button>
-                            <button class="btn btn-block btn-light"><a href="#">Paid Receipts</a></button>
-                            <button class="btn btn-block btn-light"><a href="#">Archive</a></button>
 
+
+                    <div class="card mt-2 ">
+                        <div class="card-header m-0 p-0">
+                            <a class="card-link " data-toggle="collapse" href="#receipts">
+                                <button class="btn btn-block btn-secondary">Receipts</button>
+                            </a>
+                        </div>
+                        <div id="receipts" class="collapse " data-parent="#side-panel">
+                            <div class="list-group-item">
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('menu_list') }}">menu list</a>
+                                </button>
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('all_orders') }}">orders</a></button>
+                                <button class="btn btn-block btn-light"><a href="{{ url_for('table_list') }}">tables</a></button>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-9 bg-secondary">
+            <div class="col-9 bg-secondary">
 
+
+                <div class="container">
+                    <h2>Search List</h2>
+                    <p>Type something in the input field to search the list for specific items:</p>
+                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                    <br>
+                    <ul class="list-group" id="myList">
+
+                            <li class="list-group-item"><a href="{{ url_for('menu_list') }}">menu</a></li>
+                            <li class="list-group-item"><a href="{{ url_for('all_orders') }}">orders</a></li>
+                            <li class="list-group-item"><a href="{{ url_for('table_list') }}">tables</a></li>
+                        </ul>
+
+
+                    <script>
+                        $(document).ready(function () {
+                            $("#myInput").on("keyup", function () {
+                                var value = $(this).val().toLowerCase();
+                                $("#myList li").filter(function () {
+                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                });
+                            });
+                        });
+                    </script>
+
+
+                </a>
+
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
